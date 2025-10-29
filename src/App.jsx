@@ -6,7 +6,7 @@ import Contact from './components/Contact.jsx';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-[#faf7f2] text-[#5d4037]">
       <FontsLoader />
       <Header />
       <main>
@@ -14,8 +14,8 @@ export default function App() {
         <Services />
         <Contact />
       </main>
-      <footer className="border-t border-gray-200">
-        <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-gray-600">
+      <footer className="border-t border-[#e9e0d7]">
+        <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-[#5d4037]/80">
           © {new Date().getFullYear()} Здоровье кожи головы и волос. Бережный уход, проверенные результаты.
         </div>
       </footer>
