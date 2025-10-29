@@ -1,148 +1,68 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Sparkles, Leaf, Shield } from 'lucide-react';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.6, delay: i * 0.08, ease: 'easeOut' } })
-};
+const cards = [
+  {
+    title: 'Диагностика и аналитика',
+    desc: 'Комплексная оценка состояния кожи головы, фототрихограмма и план действий.',
+    icon: Sparkles,
+    accent: 'from-teal-300/20 to-teal-500/10',
+  },
+  {
+    title: 'Восстановление и укрепление',
+    desc: 'Пептиды, аминокислоты и мягкие кислотные пилинги для здорового роста.',
+    icon: Leaf,
+    accent: 'from-purple-300/20 to-purple-500/10',
+  },
+  {
+    title: 'Профилактика и защита',
+    desc: 'Нормализация микробиома, барьерная защита и поддерживающие протоколы.',
+    icon: Shield,
+    accent: 'from-cyan-300/20 to-cyan-500/10',
+  },
+];
 
 export default function TreatmentSections() {
   return (
-    <section className="w-full py-10 sm:py-14">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+    <section id="programs" className="py-14">
+      <div className="container mx-auto px-6">
         <motion.h2
-          className="font-serif-elegant text-[26px] sm:text-[32px]"
-          style={{ color: 'var(--color-text)' }}
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.4 }}
+          className="font-display text-2xl sm:text-3xl text-center"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
           Персональные решения
         </motion.h2>
 
-        <motion.p
-          className="font-sans-clean mt-2 opacity-80"
-          style={{ color: 'var(--color-text)' }}
-          variants={fadeInUp}
-          custom={1}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.4 }}
-        >
-          Выберите направление работы с волосами и кожей головы.
-        </motion.p>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cards.map((c, idx) => (
+            <motion.article
+              key={c.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.55, delay: 0.05 * idx }}
+              className="group relative rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-5 hover:border-white/20 transition-colors"
+            >
+              <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${c.accent} opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none`} />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mt-8">
-          {/* Card 1 */}
-          <motion.div
-            variants={fadeInUp}
-            custom={0}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="group"
-          >
-            <div className="card-growth p-6 sm:p-7 bg-white rounded-xl shadow-lg transition-transform duration-300"
-                 style={{ boxShadow: 'var(--shadow-soft)' }}>
-              <div className="flex items-start gap-4">
-                <div className="icon-wrap w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center"
-                     style={{ backgroundColor: 'rgba(168,213,186,0.25)' }}>
-                  <span className="text-2xl sm:text-3xl block group-hover:icon-pulse" role="img" aria-label="growth">🌱</span>
+              <div className="relative z-10">
+                <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10 border border-white/10 shadow text-[var(--color-text)]">
+                  <c.icon className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="font-serif-elegant text-lg sm:text-xl" style={{ color: 'var(--color-text)' }}>
-                    Восстановление роста волос
-                  </h3>
-                  <p className="font-sans-clean mt-1 text-[15px] sm:text-[16px] opacity-85" style={{ color: 'var(--color-text)' }}>
-                    Пробуждение спящих фолликулов и укрепление волос изнутри
-                  </p>
+                <h3 className="mt-4 font-medium text-lg">{c.title}</h3>
+                <p className="mt-2 text-sm text-[var(--color-muted)]">{c.desc}</p>
+                <div className="mt-5">
+                  <button className="px-4 py-2 rounded-md bg-[var(--color-accent)] text-black font-medium shadow hover:shadow-md transition-shadow">Подробнее</button>
                 </div>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Card 2 */}
-          <motion.div
-            variants={fadeInUp}
-            custom={0.5}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="group"
-          >
-            <div className="card-dandruff p-6 sm:p-7 bg-white rounded-xl shadow-lg transition-all duration-300"
-                 style={{ boxShadow: 'var(--shadow-soft)' }}>
-              <div className="flex items-start gap-4">
-                <div className="icon-wrap w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center"
-                     style={{ backgroundColor: 'rgba(173,216,230,0.25)' }}>
-                  <span className="text-2xl sm:text-3xl" role="img" aria-label="snow">❄️</span>
-                </div>
-                <div>
-                  <h3 className="font-serif-elegant text-lg sm:text-xl" style={{ color: 'var(--color-text)' }}>
-                    Избавление от перхоти
-                  </h3>
-                  <p className="font-sans-clean mt-1 text-[15px] sm:text-[16px] opacity-85" style={{ color: 'var(--color-text)' }}>
-                    Эффективные методы борьбы с перхотью и восстановление баланса
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Card 3 */}
-          <motion.div
-            variants={fadeInUp}
-            custom={1}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="group"
-          >
-            <div className="card-lice p-6 sm:p-7 bg-white rounded-xl shadow-lg transition-transform duration-300"
-                 style={{ boxShadow: 'var(--shadow-soft)' }}>
-              <div className="flex items-start gap-4">
-                <div className="icon-wrap w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center"
-                     style={{ backgroundColor: 'rgba(255,215,0,0.20)' }}>
-                  <span className="text-2xl sm:text-3xl" role="img" aria-label="shield">🛡️</span>
-                </div>
-                <div>
-                  <h3 className="font-serif-elegant text-lg sm:text-xl" style={{ color: 'var(--color-text)' }}>
-                    Борьба и профилактика с вшами
-                  </h3>
-                  <p className="font-sans-clean mt-1 text-[15px] sm:text-[16px] opacity-85" style={{ color: 'var(--color-text)' }}>
-                    Надежная защита и профилактические меры
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.article>
+          ))}
         </div>
       </div>
-
-      {/* Component-scoped styles for hovers and subtle animations */}
-      <style>{`
-        .card-growth { transform: translateY(0); }
-        .card-growth:hover { transform: translateY(-5px); }
-        @keyframes subtlePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
-        .group:hover .icon-pulse { animation: subtlePulse 1.2s ease-in-out infinite; }
-
-        .card-dandruff { box-shadow: var(--shadow-soft); }
-        .card-dandruff:hover { box-shadow: 0 8px 28px rgba(0, 140, 255, 0.18), 0 2px 10px rgba(0, 140, 255, 0.12); }
-
-        .card-lice { position: relative; }
-        .card-lice:hover { transform: translateY(-3px) scale(1.01); }
-        .card-lice:hover::after {
-          content: '';
-          position: absolute;
-          inset: -2px;
-          border-radius: 14px;
-          pointer-events: none;
-          background: radial-gradient(120px 60px at 20% 10%, rgba(255,215,0,0.35), transparent 55%),
-                      radial-gradient(120px 60px at 80% 90%, rgba(255,215,0,0.25), transparent 60%);
-          box-shadow: 0 0 0 2px rgba(255,215,0,0.35);
-        }
-      `}</style>
     </section>
   );
 }

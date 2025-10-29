@@ -1,32 +1,35 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="w-full">
-      <div
-        className="mx-auto max-w-4xl px-6 sm:px-8 py-12 sm:py-16"
-        style={{ color: 'var(--color-text)' }}
-      >
-        <div
-          className="p-8 sm:p-10"
-          style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.7)',
-            borderRadius: '12px',
-            boxShadow: 'var(--shadow-soft)'
-          }}
+    <section className="relative overflow-hidden">
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[900px] max-h-[900px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(106,208,197,0.18),transparent_70%)] blur-2xl pointer-events-none" />
+
+      <div className="container mx-auto px-6 pt-20 pb-16">
+        <motion.h1
+          className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <h1 className="font-serif-elegant leading-tight"
-              style={{ fontSize: 'clamp(28px, 5vw, 48px)' }}>
-            Здоровье кожи головы и волос
-          </h1>
+          Здоровье кожи головы и волос
+        </motion.h1>
 
-          <div className="mt-5 h-1 w-28 rounded"
-               style={{ background: 'linear-gradient(90deg, var(--color-accent), var(--color-secondary))' }}
-          />
+        <motion.p
+          className="max-w-2xl mx-auto text-center mt-6 text-[var(--color-muted)]"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          Индивидуальные решения для вашей кожи головы и волос. Научный подход, деликатный уход и видимые результаты.
+        </motion.p>
 
-          <p className="mt-6 font-sans-clean text-[17px] sm:text-[18px] leading-relaxed opacity-90">
-            Персональный гид к здоровью и красоте ваших волос, Екатерина.
-          </p>
+        <div className="mt-10 flex justify-center gap-3">
+          <a href="#programs" className="px-5 py-3 rounded-lg bg-[var(--color-accent)] text-black font-medium shadow hover:shadow-lg transition-shadow">Программы ухода</a>
+          <a href="#contact" className="px-5 py-3 rounded-lg border border-white/15 hover:border-white/25 text-[var(--color-text)] transition-colors">Консультация</a>
         </div>
       </div>
     </section>

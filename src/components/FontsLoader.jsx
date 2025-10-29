@@ -1,22 +1,20 @@
 import React from 'react';
 
-// Injects Google Fonts and CSS variables for the design system
+// Inject design tokens (CSS variables) and base typography
 export default function FontsLoader() {
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-        :root {
-          --color-bg: #faf7f2; /* кремовый */
-          --color-accent: #a8d5ba; /* шалфейно-зелёный */
-          --color-text: #5d4037; /* тёмный шоколад */
-          --color-secondary: #ffab91; /* тёплый персиковый */
-          --radius-12: 12px;
-          --shadow-soft: 0 6px 24px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .font-serif-elegant { font-family: 'Playfair Display', Georgia, serif; }
-        .font-sans-clean { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-      `}</style>
-    </>
+    <style>{`
+      :root {
+        --color-bg: #0e0f12;
+        --color-text: #eaeaf0;
+        --color-muted: #a8aab3;
+        --color-accent: #6ad0c5;
+        --color-secondary: #a58bff;
+        --radius-12: 12px;
+        --shadow-soft: 0 10px 30px rgba(0,0,0,0.35);
+      }
+      body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--color-bg); color: var(--color-text); }
+      .font-display { font-family: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; }
+    `}</style>
   );
 }
