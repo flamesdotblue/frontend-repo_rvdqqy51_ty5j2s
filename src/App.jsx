@@ -2,6 +2,7 @@ import React from 'react';
 import FontsLoader from './components/FontsLoader.jsx';
 import IntroOverlay from './components/IntroOverlay.jsx';
 import HeroSection from './components/HeroSection.jsx';
+import AccentBar from './components/AccentBar.jsx';
 import TreatmentSections from './components/TreatmentSections.jsx';
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
           </div>
 
           <HeroSection />
+          <AccentBar />
           <TreatmentSections />
         </div>
       </main>
